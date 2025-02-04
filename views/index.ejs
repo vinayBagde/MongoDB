@@ -17,12 +17,30 @@
       <p>From: <i><%= chat.from %></i></p>
       <div class="msg">
         <p><%= chat.msg %></p>
+        <form
+          method="GET"
+          action="/chats/<%= chat._id%>/edit"
+          style="display: inline-block"
+        >
+          <button>Edit</button>
+        </form>
+        <form
+          method="DELETE"
+          action="/chats/<%= chat._id%>?_method=DELETE"
+          style="display: inline-block"
+        >
+          <button>Delete</button>
+        </form>
       </div>
       <p>Recieved by <i><%= chat.to %></i></p>
       <hr />
+      <P><%= chat.created_at.toString().split(" ")[4]%></P>
+      <P
+        >Create timging: <%= chat.created_at.toString().split(" ").slice(0,
+        4).join("-")%></P
+      >
     </div>
     <br /><br />
-
     <%}%>
   </body>
 </html>
